@@ -13,7 +13,6 @@ export default function Home() {
     <main className="min-h-screen bg-flower">
       {showSplash && <SplashPage onComplete={() => setShowSplash(false)} />}
 
-
       <div>
         <Hero />
         <Socials />

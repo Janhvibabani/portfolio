@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+// no local state needed — show all services open by default
 
 const services = [
   {
@@ -58,7 +58,6 @@ const services = [
 ]
 
 export default function Services() {
-  const [expandedId, setExpandedId] = useState<number | null>(null)
 
   return (
     <section className="py-5 px-6 border-t border-border">
@@ -67,56 +66,48 @@ export default function Services() {
         {/* Services list */}
         <div className="space-y-0">
           {services.map((service) => (
-            <div key={service.id} className="border-b border-border">
-              <button
-                onClick={() => setExpandedId(expandedId === service.id ? null : service.id)}
-                className="w-full py-6 flex items-center justify-between hover:opacity-60 transition-opacity text-left"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-2xl font-serif text-3xl">+</span>
-                  <h3 className="text-2xl font-serif font-light">{service.title}</h3>
-                </div>
-              </button>
+            <div key={service.id} className="border-b border-border py-6">
+              <div className="flex items-center gap-4 mb-4">
+                <h3 className="text-2xl font-serif font-light">{service.title}</h3>
+              </div>
 
-              {/* Expanded content */}
-              {expandedId === service.id && (
-                <div className="pb-8 pl-12 pr-6">
+              <div className="pb-8 pl-0 pr-0">
                   {/* If this is the Experience service and has experiences, render accordion */}
                   {service.experiences ? (
                     <div className="space-y-6 mb-6">
                       {service.experiences.map((exp, eidx) => (
-                        <details key={eidx} className="bg-white rounded-lg p-6 shadow-sm border border-border">
-                            <summary className="cursor-pointer font-medium flex items-center gap-4 text-lg">
-                              {/* company logo if available */}
-                              {exp.company?.toLowerCase().includes('google') && (
-                                <img src="/google.svg" alt="Google" className="w-10 h-10 rounded-full" />
-                              )}
-                              {exp.company?.toLowerCase().includes('amazon') && (
-                                <img src="/amazon.svg" alt="Amazon" className="w-10 h-10 rounded-full" />
-                              )}
-                              <div>
-                                <div className="text-base font-semibold">{exp.company}</div>
-                                <div className="text-sm text-muted-foreground">{exp.role}</div>
-                              </div>
-                            </summary>
-                            <div className="mt-4">
-                              <p className="text-base text-muted-foreground">{exp.project}</p>
-                              {exp.skills ? (
-                                <div className="mt-3 flex flex-wrap gap-2">
-                                  {exp.skills.map((s, si) => (
-                                    <span key={si} className="text-xs px-2 py-1 bg-muted/40 rounded-full text-muted-foreground">{s}</span>
-                                  ))}
-                                </div>
-                              ) : null}
-                              {exp.bullets ? (
-                                <ul className="mt-3 ml-5 list-disc text-base text-muted-foreground space-y-2">
-                                  {exp.bullets.map((b, bi) => (
-                                    <li key={bi}>{b}</li>
-                                  ))}
-                                </ul>
-                              ) : null}
+                        <div key={eidx} className="bg-white rounded-lg p-6 shadow-sm border border-border">
+                          <div className="flex items-center gap-4 text-lg">
+                            {/* company logo if available */}
+                            {exp.company?.toLowerCase().includes('google') && (
+                              <img src="/google.svg" alt="Google" className="w-10 h-10 rounded-full" />
+                            )}
+                            {exp.company?.toLowerCase().includes('amazon') && (
+                              <img src="/amazon.svg" alt="Amazon" className="w-10 h-10 rounded-full" />
+                            )}
+                            <div>
+                              <div className="text-base font-semibold">{exp.company}</div>
+                              <div className="text-sm text-muted-foreground">{exp.role}</div>
                             </div>
-                        </details>
+                          </div>
+                          <div className="mt-4">
+                            <p className="text-base text-muted-foreground">{exp.project}</p>
+                            {exp.skills ? (
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                {exp.skills.map((s, si) => (
+                                  <span key={si} className="text-xs px-2 py-1 bg-muted/40 rounded-full text-muted-foreground">{s}</span>
+                                ))}
+                              </div>
+                            ) : null}
+                            {exp.bullets ? (
+                              <ul className="mt-3 ml-5 list-disc text-base text-muted-foreground space-y-2">
+                                {exp.bullets.map((b, bi) => (
+                                  <li key={bi}>{b}</li>
+                                ))}
+                              </ul>
+                            ) : null}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   ) : null}
@@ -181,7 +172,6 @@ export default function Services() {
                     </div>
                   )}
                 </div>
-              )}
             </div>
           ))}
         </div>
