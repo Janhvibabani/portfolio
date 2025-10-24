@@ -1,7 +1,5 @@
 "use client"
 
-// no local state needed — show all services open by default
-
 const services = [
   {
     id: 1,
@@ -41,7 +39,8 @@ const services = [
         title: "Chess Timer",
         url: "https://chess-timer-two.vercel.app/",
         image: "/chessTimer.png",
-        description: "A lightweight chess clock built with React & Vercel",
+        description: "There was no pretty chess timer, so I made one — smooth, configurable horizontal/vertical layouts and pause support.",
+        skills: ["TypeScript", "Next.js", "HTML", "CSS", "JavaScript"],
       },
     ],
   },
@@ -112,7 +111,6 @@ export default function Services() {
                     </div>
                   ) : null}
 
-                  {/* images removed per request */}
                   {/* LeetCode profile card for service id 3 */}
                   {service.leetcodeUser && (
                     <div className="mt-6">
@@ -123,7 +121,6 @@ export default function Services() {
                         className="inline-flex items-center gap-4"
                       >
                         <div className="rounded-md overflow-hidden">
-                          {/* external public chart (if available) - no background so no gray padding */}
                           <img
                             src={`https://leetcode-stats.vercel.app/api?username=${service.leetcodeUser}&theme=dark`}
                             alt={`LeetCode stats for ${service.leetcodeUser}`}
@@ -164,6 +161,13 @@ export default function Services() {
                             <div>
                               <h4 className="font-medium">{p.title}</h4>
                               <p className="text-xs text-muted-foreground">{p.description}</p>
+                              {p.skills && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {p.skills.map((sk, ski) => (
+                                    <span key={ski} className="text-xs px-2 py-1 bg-muted/40 rounded-full text-muted-foreground">{sk}</span>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                             <a href={p.url} target="_blank" rel="noreferrer" className="text-sm text-primary underline">Open</a>
                           </div>
