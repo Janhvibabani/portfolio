@@ -42,6 +42,14 @@ const services = [
         description: "There was no pretty chess timer, so I made one — smooth, configurable horizontal/vertical layouts and pause support.",
         skills: ["TypeScript", "Next.js", "HTML", "CSS", "JavaScript"],
       },
+
+      {
+        title: "Photo-Booth",
+        url: "https://photo-booth-sepia-chi.vercel.app/",
+        image: "/photo-booth.png",
+        description: "Made it to practice my nextjs skills. A simple photo booth app with download functionality.",
+        skills: ["TypeScript", "Next.js", "HTML", "CSS", "JavaScript"],
+      },
     ],
   },
   {
@@ -75,7 +83,11 @@ export default function Services() {
                   {service.experiences ? (
                     <div className="space-y-6 mb-6">
                       {service.experiences.map((exp, eidx) => (
-                        <div key={eidx} className="bg-white rounded-lg p-6 shadow-sm border border-border">
+                        <div
+                          key={eidx}
+                          className="rounded-lg p-6 shadow-sm border border-border"
+                          style={{ backgroundColor: "var(--card)", color: "var(--card-foreground)" }}
+                        >
                           <div className="flex items-center gap-4 text-lg">
                             {/* company logo if available */}
                             {exp.company?.toLowerCase().includes('google') && (
@@ -86,20 +98,26 @@ export default function Services() {
                             )}
                             <div>
                               <div className="text-base font-semibold">{exp.company}</div>
-                              <div className="text-sm text-muted-foreground">{exp.role}</div>
+                              <div className="text-sm" style={{ color: "var(--muted-foreground)" }}>{exp.role}</div>
                             </div>
                           </div>
                           <div className="mt-4">
-                            <p className="text-base text-muted-foreground">{exp.project}</p>
+                            <p className="text-base" style={{ color: "var(--muted-foreground)" }}>{exp.project}</p>
                             {exp.skills ? (
                               <div className="mt-3 flex flex-wrap gap-2">
                                 {exp.skills.map((s, si) => (
-                                  <span key={si} className="text-xs px-2 py-1 bg-muted/40 rounded-full text-muted-foreground">{s}</span>
+                                  <span
+                                    key={si}
+                                    className="text-xs px-2 py-1 rounded-full"
+                                    style={{ backgroundColor: "rgba(0,0,0,0.06)", color: "var(--muted-foreground)" }}
+                                  >
+                                    {s}
+                                  </span>
                                 ))}
                               </div>
                             ) : null}
                             {exp.bullets ? (
-                              <ul className="mt-3 ml-5 list-disc text-base text-muted-foreground space-y-2">
+                              <ul className="mt-3 ml-5 list-disc text-base space-y-2" style={{ color: "var(--muted-foreground)" }}>
                                 {exp.bullets.map((b, bi) => (
                                   <li key={bi}>{b}</li>
                                 ))}
@@ -154,22 +172,22 @@ export default function Services() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                       {service.projects.map((p, pi) => (
                         <div key={pi} className="border rounded-lg overflow-hidden">
-                          <div className="h-48 bg-muted/40">
+                          <div className="h-48" style={{ backgroundColor: "var(--muted)" }}>
                             <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
                           </div>
                           <div className="p-4 flex items-center justify-between">
                             <div>
                               <h4 className="font-medium">{p.title}</h4>
-                              <p className="text-xs text-muted-foreground">{p.description}</p>
+                              <p className="text-xs" style={{ color: "var(--muted-foreground)" }}>{p.description}</p>
                               {p.skills && (
                                 <div className="mt-2 flex flex-wrap gap-2">
                                   {p.skills.map((sk, ski) => (
-                                    <span key={ski} className="text-xs px-2 py-1 bg-muted/40 rounded-full text-muted-foreground">{sk}</span>
+                                    <span key={ski} className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: "var(--muted)", color: "var(--muted-foreground)" }}>{sk}</span>
                                   ))}
                                 </div>
                               )}
                             </div>
-                            <a href={p.url} target="_blank" rel="noreferrer" className="text-sm text-primary underline">Open</a>
+                            <a href={p.url} target="_blank" rel="noreferrer" className="text-sm underline" style={{ color: "var(--primary)" }}>Open</a>
                           </div>
                         </div>
                       ))}
