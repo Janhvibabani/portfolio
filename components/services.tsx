@@ -37,7 +37,7 @@ const services = [
     projects: [
       {
         title: "Chess Timer",
-        url: "https://chess-timer-two.vercel.app/",
+        url: "https://chesstimer.janhvi.me/",
         image: "/chessTimer.png",
         description: "There was no pretty chess timer, so I made one — smooth, configurable horizontal/vertical layouts and pause support.",
         skills: ["TypeScript", "Next.js", "HTML", "CSS", "JavaScript"],
@@ -45,7 +45,7 @@ const services = [
 
       {
         title: "Photo-Booth",
-        url: "https://photo-booth-sepia-chi.vercel.app/",
+        url: "https://photobooth.janhvi.me",
         image: "/photo-booth.png",
         description: "Made it to practice my nextjs skills. A simple photo booth app with download functionality.",
         skills: ["TypeScript", "Next.js", "HTML", "CSS", "JavaScript"],
